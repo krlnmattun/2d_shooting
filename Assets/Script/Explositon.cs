@@ -5,6 +5,6 @@ using UnityEngine;
 public class Explositon : MonoBehaviour {
 
 	void OnAnimationFinish(){
-        Destroy(gameObject);
-    }
+		Destroy(gameObject);
+	}
 }
