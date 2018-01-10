@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour {
 	// 弾削除までの時間 /
 	public float lifeTime = 5;
 
+	// 攻撃力 /
+	public int power = 1;
+
 	// Use this for initialization
 	void Start () {
 		GetComponent<Rigidbody2D>().velocity = transform.up.normalized * speed;

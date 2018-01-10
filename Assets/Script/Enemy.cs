@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+	// HP /
+	public int hp = 1;
+
 	// Spaceshipコンポーネント /
 	Spaceship spaceship;
 
@@ -51,13 +54,27 @@ public class Enemy : MonoBehaviour {
 			return;
 		}
 
+		// PlayerBulletのTransfrom取得 /
+		Transform pleyerBulletTransForm = c.transform.parent;
+
+		// Bulletコンポーネント取得 /
+		Bullet bullet = pleyerBulletTransForm.GetComponent<Bullet>();
+
+		// HPを減らす /
+		hp -= bullet.power;
+
 		// 弾の削除 /
 		Destroy(c.gameObject);
 
-		// 爆発 /
-		spaceship.Explosion();
+		// HP0以下の場合、削除処理 /
+		if (hp <= 0) {
+			// 爆発 /
+			spaceship.Explosion();
 
-		// プレイヤー削除 /
-		Destroy(gameObject);
+			// プレイヤー削除 /
+			Destroy(gameObject);
+		} else {
+			spaceship.GetAnimator().SetTrigger("Damage");
+		}
 	}
 }
