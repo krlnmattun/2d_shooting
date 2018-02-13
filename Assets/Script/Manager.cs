@@ -30,6 +30,9 @@ public class Manager : MonoBehaviour {
 	}
 
 	public void GameOver() {
+		// ハイスコア保存 /
+		FindObjectOfType<Score>().Save();
+
 		// タイトル表示 /
 		title.SetActive(true);
 	}

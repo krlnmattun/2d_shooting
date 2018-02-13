@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour {
 	// HP /
 	public int hp = 1;
 
+	// スコア /
+	public int point = 100;
+
 	// Spaceshipコンポーネント /
 	Spaceship spaceship;
 
@@ -68,6 +71,9 @@ public class Enemy : MonoBehaviour {
 
 		// HP0以下の場合、削除処理 /
 		if (hp <= 0) {
+			// スコア加算 /
+			FindObjectOfType<Score>().AddPoint(point);
+
 			// 爆発 /
 			spaceship.Explosion();
 
